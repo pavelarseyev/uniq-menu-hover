@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <section>
+    <section class="wrapper">
         <aside>
             <div class="hover-element bottom">
                 <div class="background"></div>
@@ -23,7 +25,7 @@
             </strong>
 
             <div class="menu-wrapper">
-                
+
                 <ul class="main-nav">
                     <li class="active"><a href="#">Menu item 1</a></li>
                     <li><a href="#">Menu item 2</a></li>
@@ -34,12 +36,43 @@
                 </ul>
             </div>
         </aside>
-        <div class="content">
+        <main class="content">
+            <section class="main-screen">
+                <div class="container">
+                    <div class="holder">
+                        <div class="text">
+                            <h1>
+                                Uniq
+                                <span>Studio</span>
+                            </h1>
 
-        </div>
+                            <p>
+                                Сделаем ваш бред культовым, а стиль максимально узнаваемым, исходя из особенностей
+                                продукта
+                            </p>
+
+                            <div class="buttons">
+                                <button class="button pink"> Сделаем Это</button>
+
+                                <button class="play-btn">
+
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="image">
+                            <img src="letter.png" alt="U">
+                            <canvas id="circle-canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
     </section>
-    
+
     <script src="jquery.js"></script>
+    <script src="circle-animation.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -5,7 +5,7 @@
 	--small-width: calc(var(--width) / 3);
 	--line-count: 14;
 	--line-size: 2px;
-	--line-between: calc((var(--el-height) - var(--line-size)*var(--line-count)) / var(--line-count));
+	--line-between: calc((var(--el-height) - var(--line-size) * var(--line-count)) / var(--line-count));
 	--animation-transition: 0.5s;
 	--animation-timing: linear;
 }
@@ -30,6 +30,19 @@ $color-darkblue: #040021;
 $gradient-color1: rgba($color-darkblue, 1);
 $gradient-color2: rgba($color-darkblue, 0);
 
+@keyframes animateLetter {
+	0% {
+		top: -7px;
+	}
+
+	50% {
+		top: 7px;;
+	}
+
+	100% {
+		top: -7px;
+	}
+}
 
 a {
 	text-decoration: none;
@@ -41,17 +54,11 @@ body {
 	font-family: sans-serif;
 }
 
-.container {
-	width: 100%;
-	padding: 0 20px;
-	max-width: 1210px;
-	margin: 0 auto;
-}
-
-section {
+.wrapper {
 	height: 100vh;
 	margin-left: $aside-size;
-	background: $color-darkblue linear-gradient(to left top, rgba($color-white, .1), rgba($color-white, 0)) no-repeat 50% 50% / 100% 100%;
+	background: $color-darkblue linear-gradient(to left top, rgba($color-white, 0.1), rgba($color-white, 0)) no-repeat
+		50% 50% / 100% 100%;
 }
 
 aside {
@@ -61,8 +68,8 @@ aside {
 	height: 100vh;
 	width: $aside-size;
 	padding: 50px 30px 50px 60px;
-	background: $color-darkblue url('./menu-bg.jpg') no-repeat 0 0 / 100% 100%;
-} 
+	background: $color-darkblue url("./menu-bg.jpg") no-repeat 0 0 / 100% 100%;
+}
 
 .main-logo {
 	display: block;
@@ -75,8 +82,6 @@ aside {
 	color: $color-white;
 	margin: 0 0 50px;
 	text-decoration: none;
-
-	
 
 	a {
 		display: block;
@@ -110,7 +115,13 @@ aside {
 		background-repeat: no-repeat;
 		background-size: 100% calc(var(--el-height) * 2);
 		background-position: 0 -var(--line-size);
-		background-image: repeating-linear-gradient(to bottom, $color-pink 0, $color-pink var(--line-size), transparent var(--line-size), transparent calc(var(--line-size) + var(--line-between)));
+		background-image: repeating-linear-gradient(
+			to bottom,
+			$color-pink 0,
+			$color-pink var(--line-size),
+			transparent var(--line-size),
+			transparent calc(var(--line-size) + var(--line-between))
+		);
 	}
 
 	.line {
@@ -121,7 +132,7 @@ aside {
 		height: var(--line-size);
 		margin-top: -var(--line-size);
 		width: var(--width);
-		background-color: $color-pink; 
+		background-color: $color-pink;
 		border-radius: 0 2px 2px 0;
 	}
 
@@ -162,12 +173,149 @@ aside {
 		}
 
 		a {
-			color: rgba($color-white, .6);
-			transition: color .3s;
+			color: rgba($color-white, 0.6);
+			transition: color 0.3s;
 
 			&:hover {
-				color: $color-white;;
+				color: $color-white;
 			}
 		}
 	}
+}
+
+.main-screen {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+
+	.holder {
+		display: flex;
+		align-items: center;
+		width: 100%;
+	}
+
+	.text {
+		position: relative;
+		z-index: 5;
+		width: 48%;
+		margin-right: 100px;
+
+		h1 {
+			font-size: 154px;
+			font-weight: bold;
+			line-height: 0.8;
+			margin-bottom: 60px;
+
+			span {
+				display: block;
+				padding-left: 1.8ch;
+			}
+		}
+
+		p {
+			width: 70%;
+			font-size: 18px;
+			line-height: 23px;
+			color: #cab9db;
+			border-left: 3px solid $color-pink;
+			border-radius: 2px;
+			padding: 4px 0 4px 30px;
+			margin-bottom: 70px;
+		}
+
+		.buttons {
+			button {
+				display: inline-block;
+				vertical-align: middle;
+				cursor: pointer;
+
+				&.button {
+					text-align: center;
+					min-width: 210px;
+					font-size: 14px;
+					line-height: 20px;
+					color: $color-white;
+					text-transform: uppercase;
+					letter-spacing: 2px;
+					border-radius: 30px;
+					border: 0;
+					background-color: $color-pink;
+					padding: 20px 20px;
+				}
+
+				&.play-btn {
+					position: relative;
+					width: 56px;
+					height: 56px;
+					border-radius: 50%;
+					border: 2px solid $color-white;
+					background-color: transparent;
+
+					&::after {
+						content: "";
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						border: solid transparent;
+						border-width: 8px 12px;
+						border-left-color: $color-white;
+						margin-left: -6px;
+						margin-top: -8px;
+					}
+				}
+
+				& + button {
+					margin-left: 25px;
+				}
+			}
+		}
+	}
+
+	.image {
+		position: relative;
+		z-index: 1;
+		width: 30.4%;
+		max-width: 378px;
+
+		&::after {
+			content: "";
+			width: 100%;
+			display: block;
+			height: 0;
+			pointer-events: none;
+			padding-top: 123.68%;
+		}
+
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			filter: drop-shadow(0 0 20px rgba($color-pink, 0.4));
+		}
+
+		canvas {
+			display: block;
+			position: fixed;
+			top: 0;
+			left: 0;
+			// height: auto;
+			pointer-events: none;
+			filter: drop-shadow(0 0 35px $color-pink);
+		}
+	}
+}
+
+
+.container {
+	position: relative;
+	display: flex;
+	align-items: center;
+	flex-grow: 1;
+	width: 100%;
+	padding: 0 10%;
+	margin: 0 auto;
+	background-color: rgba($color-white, 0.1);
 }

@@ -12,7 +12,6 @@ $(function () {
     let settings = [0, 100 + lineHeight];
 
     $mainMenu.on("mouseenter", "li", function () {
-
         let self = $(this);
         let selfTop = Math.floor(self.offset().top + self.innerHeight() / 2);
         let hoverElHeight = $hoverEl.height();
@@ -67,4 +66,6 @@ $(function () {
           animationTiming
         );
     });
+  
+  
 });
