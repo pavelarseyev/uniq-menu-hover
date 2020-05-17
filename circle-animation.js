@@ -66,18 +66,19 @@ function drawRing() {
   let x = centerX + Math.cos(startAngle) * radius - halfLine;
   let y = centerY + Math.sin(startAngle) * radius - halfLine;
 
-  ctx.beginPath();
-  ctx.moveTo(x, y);
+  
 
   for (let i = 0; i <= lineStartIteration; i++) {
-    ctx.strokeStyle = `hsl(343, 94%, ${56 + (lineStartIteration / i * 39)}%)`;
+    ctx.strokeStyle = `hsl(343, 94%, ${100 - (i / lineStartIteration * 44)}%)`;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
     let currentAngle = startAngle - (i * Math.PI) / 180;
     x = centerX + Math.cos(currentAngle) * radius - halfLine;
     y = centerY + Math.sin(currentAngle) * radius - halfLine;
 
     ctx.lineTo(x, y);
+    ctx.stroke();
   }
-  ctx.stroke();
 
   let slowTime = time * 0.01;
   endX = w + 100;
